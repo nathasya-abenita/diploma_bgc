@@ -1,0 +1,68 @@
+\documentclass[12pt,a4paper]{article}
+\renewcommand{\abstractname}{Summary}
+% Packages
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+\geometry{margin=0.75in}
+\onehalfspacing
+
+\title{Quantitative Analysis of Deforestation in Sumatra Island}
+\author{Nathasya Abenita Christien}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% \begin{abstract}
+% I propose to study deforestation in Sumatra by using a simple coupled human-forest model. Here, model referen
+% \end{abstract}
+
+\section{Introduction}
+Human impact on the Earth is clear as understanding of climate change has been developed in the last decades. While climate change induced by anthropogenic greenhouse gases is an intricate study, human impact through deforestation is more obvious. 
+
+The impact of deforestation becomes prominent looking at an Indonesian island, Sumatra. This island has experienced the fastest rate of deforestation with almost half of its forest lost between 1990 and 2020 \citep{pnas}. The Indonesian government and civil society have blamed rampant deforestation in Sumatra for devastating floods and landslides that have killed more than 1100 people since 26 November 2025, following the rare tropical storm of Cyclone Senyar \citep{earthsight}.
+
+Attempts in studying deforestation in a local and global scale have been conducted. In some of the studies, a simple model between human population and resources (e.g forest area) is utilized. Locally, this model was used to study the society collapse in the Easter Island \citep{bologna2008simple}. \cite{bologna2020deforestation} extend the study in a global scale to analyze the time in which human society collapses with the current rate of deforestation.
+
+In this short study, I propose to study the simple human-forest model in a local context of Sumatra Island. The main goal of the study is to analytically discuss the system properties using tools we have learned in class. Next, simulation is conducted based on real data to choose appropriate parameters to Sumatra. Additionally, a discussion about extending the model, e.g considering climate stress or human intervention to suppress deforestation, can be added.
+
+\section{Objectives}
+\begin{itemize}
+    \item Discuss the properties (e.g stability) of the humans-forest model analytically,
+    \item Simulate the model for Sumatra Island based on real data,
+    \item Study the role of intervention and climate stress by adding new parameters and study the sensitivity.
+\end{itemize}
+
+\section{Model Formulation}
+\cite{bologna2008simple}, followed by \cite{bologna2020deforestation}, presented a two-variable model for humans-forest interaction. We model a deterministic process for human population and resource (forest) consumption:
+
+\begin{align}
+    \frac{d}{dt} N(t) = r N(t) \left[ 1 - \frac{N(t)}{\beta R(t)} \right], \\
+    \frac{d}{dt} R(t) = r' R(t) \left[ 1 - \frac{R(t)}{R_c} \right] - a_0 N(t) R(t). \label{forest_eq}
+\end{align}
+
+where $N$ and $R$ respectively represent the human population and forest coverage area in the island. $\beta$ is a positive constant related to the carrying capacity of the population, $r$ is the growth rate for humans, $a_0$ is identified as the technological parameter measuring the rate at which humans can extract the resources from the environment. $r'$ is the renewability parameter representing the capability of the resources to regenerate and $R_c$ is the forest carrying capacity.
+
+Note that the model is different from the usual Lotka-Volterra models where the carrying capacity variation comes from external natural forces. Now, it is directly connected with the population dynamics. The dynamics of this model is typically described by a growing human population until a maximum is reached after a rapid collapse in population occurs before eventually reaching a low population steady state or total extinction. This maximum point is labelled as the "no-return point" where population collapse happens if deforestation rate is not changed before that time.
+
+Previously, the model is used to a closed system where humans could not leave the island or planet. Here, we have two choices: (i) treat Sumatra Island as a closed system too, or (ii) reinterpret $N(t)$ as human exploitation effort instead.
+
+Further questions can be asked. What if we suppress human exploitation by some kind of intervention? Also, we know that the forest is highly dependant to the existing climate. With climate change, anomalies can further slow forest growth. Let $u$ and $\gamma$ be parameters that represent human intervention and climate stress, we may rewrite Eq \eqref{forest_eq} to:
+\begin{equation}
+    \frac{d}{dt} R(t) = r' R(t) \left[ 1 - \frac{R(t)}{R_c} \right] - a_0 N(t) R(t) + (u - \gamma) R(t)
+\end{equation}
+where we assume that interventions and climate stress scale with the existing forest area. Sensitivity analysis can be performed by varying the constants $u$ and $\gamma$ to study the dynamics sensitivity to both factors.
+
+\section{Data and Methodology}
+The differential equations will be solved with Euler's method which can be applied to a system of differential equations. Numerical integration and solution visualization will be performed using Python language. There are plenty of data to describe the forest coverage in Sumatra island over time. For example, \cite{bologna2008simple} laid out the forest change of the island between 1990 and 2010 from Landsat datasets. Human population number can be taken from national statistics institution in Indonesia (BPS) or past study \citep{Withington01031982}.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
