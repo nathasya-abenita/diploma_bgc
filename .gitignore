@@ -1,3 +1,7 @@
+# General folders
+data
+__pycache__
+
 # References or LaTeX output
 *.pdf
 
