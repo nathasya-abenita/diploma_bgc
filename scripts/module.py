@@ -40,7 +40,7 @@ def plot_collapse_ci(ax, gamma_list, clps_ens_list,
         label=f"{100*(upper_q-lower_q):.0f}% interval"
     )
 
-    ax.set_xlabel(r"$\gamma$")
+    ax.set_xlabel(r"$\gamma_0$")
     ax.set_ylabel("collapse time")
     ax.grid(True, alpha=0.3)
     ax.legend()
@@ -182,7 +182,7 @@ if __name__ == '__main__':
 
     # Call 
     model = HumanForestModel(dt, r, r_, a0, beta, Rc, gamma, N0, R0, t_bounds)
-    enso_list = model.generate_enso()
+    enso_list = model.generate_enso(plot=True)
     N_list, R_list, t_list, col_time = model.solve(enso_list)
 
     # Plot
