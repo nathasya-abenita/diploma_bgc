@@ -6,12 +6,45 @@ def plot_ensemble (t_list, ens, ax, label=None):
     # Compute statistics
     ens = np.array(ens)
     mean = np.mean(ens, axis=0)
-    q05 = np.quantile(ens, 0.05, axis=0)
-    q95 = np.quantile(ens, 0.95, axis=0)
+    q025 = np.quantile(ens, 0.025, axis=0)
+    q975 = np.quantile(ens, 0.975, axis=0)
 
     # Plot
     ax.plot(t_list, mean, label=label)
-    ax.fill_between(t_list, q05, q95, alpha=0.15, linewidth=0)
+    ax.fill_between(t_list, q025, q975, alpha=0.15, linewidth=0)
+    return ax
+
+def plot_collapse_ci(ax, gamma_list, clps_ens_list,
+                     lower_q=0.025, upper_q=0.975, outfile='collapse_time.csv'):
+
+    gamma = np.asarray(gamma_list)
+
+    # Compute confidence interval
+    mean_ct = np.array([np.mean(ct) for ct in clps_ens_list])
+    q_low = np.array([np.quantile(ct, lower_q) for ct in clps_ens_list])
+    q_high = np.array([np.quantile(ct, upper_q) for ct in clps_ens_list])
+
+    # Export values as CSV file
+    df = pd.DataFrame({'gamma': gamma, 'q_low': q_low, 
+                       'mean_ct': mean_ct, 'q_high': q_high})
+    df.to_csv(outfile)
+
+    # Plot confidence interval
+    ax.plot(gamma, mean_ct, marker="o", label="ensemble mean")
+
+    ax.fill_between(
+        gamma,
+        q_low,
+        q_high,
+        alpha=0.3,
+        label=f"{100*(upper_q-lower_q):.0f}% interval"
+    )
+
+    ax.set_xlabel(r"$\gamma$")
+    ax.set_ylabel("collapse time")
+    ax.grid(True, alpha=0.3)
+    ax.legend()
+
     return ax
 
 class HumanForestModel:
@@ -67,8 +100,7 @@ class HumanForestModel:
     def update_R (self, N, R, enso):
         enso = max([0, enso])
 
-        r__new = self.r_ * enso * (1 - self.gamma)
-        drdt = r__new * R * (1 - R / self.Rc)   \
+        drdt = self.r_ * R * (1 - R / self.Rc)   \
                - self.a0 * N * R \
                - self.gamma * enso * R
         
