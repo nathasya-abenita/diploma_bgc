@@ -1,0 +1,167 @@
+\documentclass{style}
+
+% ---------------- Your packages ----------------
+\usepackage{amsmath,amsfonts,amsthm}
+% \usepackage{algorithmic}
+% \usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{natbib}
+% \usepackage{algorithm}
+\usepackage{hyperref}
+
+% ---------------- Title/Author ----------------
+\title{Quantitative Analysis of Deforestation with Climate Interaction: A study case to Sumba Island, Indonesia}
+
+\authors{Nathasya Abenita Christien}
+\affiliation{
+    Biogeochemical Cycles Course \\ Earth System Physics \\ The Abdus Salam International Centre of Theoretical Physics
+}
+
+\keywords{deforestation, society collapse, El Niño}
+
+% ---------------- Theorem environments (sample) ----------------
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Deforestation in Sumba Island is studied using a coupled model between human, forest, and climate. To include the role of climate stress in shaping the island's habitat, the forest growth is influenced by a climate factor, e.g El Niño. By including influence from El Niño, society collapse time can come earlier by 41--52 years.
+\end{abstract}
+
+\printkeywords
+
+% optional separator line (single-column)
+\tmsceendfrontmatter
+
+% =========================================================
+\section{Introduction}
+Human impact on the Earth is clear as we develop understanding of climate change in the past decades. While climate change induced by anthropogenic greenhouse gases is an intricate study, human impact through deforestation is more obvious.
+
+Attempts in studying deforestation in a local and global scale have been conducted. In some of the studies, a simple model between human population and resources (e.g forest area) is utilized. Locally, this model was used to study the society collapse of the ancient civilization in the Easter Island \cite{bologna2008simple}. The model was proved to give a reasonable estimate of the collapse time. \cite{bologna2020deforestation} extended the study in a global scale to analyze the time in which human society collapses with the current rate of deforestation. Both models are based on the situation that inhabitants of Easter Island or the Earth planet cannot leave the island or the planet.
+
+A resembling situation can be seen in an isolated island like Sumba with a population of 0.8 million and home to indigenous people who are dependant to the natural resources. Sumba is part of the East Nusa Tenggara province in Indonesia with 200 km long and 40--70 km wide. The island covers area of 10,910 km${}^{-2}$. The island was originally covered in decidious monsoon forest, with evergreen rainforests for south-facing slopes which stays moist during dry season \cite{fire}. Due to history in deforestation, most of this forest has been cleared such that it covers only 11\% of the island in 2004 \cite{forest_sumba}. The island has arid climate and deals with more drought and water deficits during El Niño \cite{elnino_sumba}. In other study, El Niño has been recognized to affect tropical forest growth with strongly negative impacts in parts of Southeast Asia \cite{enso_forest}. While La Niña is understood to give earlier onset of the forest growth \cite{growing_season}, the effect of it is less studied and quantification of the effect is more uncertain.
+
+In this short study, we are interested to extend the simple humans-forest model in \cite{bologna2008simple} and \cite{bologna2020deforestation} with climate interaction to capture the dynamics Sumba Island better. The extension focuses on modelling El Niño events effect in forest area change. Sensitivity analysis is also performed to understand the influence of the introduced climate stress to the dynamics, especially in estimating society collapse.
+
+\section{Model formulation}
+In \cite{bologna2008simple}, followed by \cite{bologna2020deforestation}, a two-variable model for humans-forest interaction was presented. The model consists of a deterministic process for human population and resource (forest) consumption:
+
+\begin{align}
+    \frac{d}{dt} N(t) = r N(t) \left[ 1 - \frac{N(t)}{\beta R(t)} \right], \label{human_eq} \\
+    \frac{d}{dt} R(t) = r' R(t) \left[ 1 - \frac{R(t)}{R_c} \right] - a N(t) R(t). \label{forest_eq_old}
+\end{align}
+
+where $N$ and $R$ respectively represent the human population and forest coverage area in the island. $\beta$ is a positive constant related to the carrying capacity of the population, $r$ is the growth rate for humans ($0.01 \text{ year}^{-1}$), $a$ is identified as the technological parameter measuring the rate at which humans can extract the resources from the environment. $r'$ is the renewability parameter representing the capability of the resources to regenerate ($0.001 \text{ year}^{-1}$) and $R_c$ is the forest carrying capacity.
+
+Note that the model is different from the usual Lotka-Volterra models where the carrying capacity variation comes from external natural forces. Now, it is directly connected with the population dynamics. The dynamics of this model is typically described by a growing human population until a maximum is reached after a rapid collapse in population occurs before eventually reaching a low population steady state or total extinction. This maximum point is labelled as the "no-return point" where population collapse happens if deforestation rate is not changed before that time. Hereinafter, we refer to this point as society collapse time.
+
+To include climate stress in the model, we focus on introducing El Niño effect on forest dynamics. We use linearly detrended monthly index of Niño 3.4 (1950--2025) to capture the variability \cite{huang2017extended} and denote $E(t)$ as the index at year $t$. Linear detrend is applied in attempt to seperate anthropogenic climate change effect in the climate variability.
+
+Let $\gamma(t)$ represent the influence of El Niño to forest growth, we may modify Eq \eqref{forest_eq_old} to:
+\begin{equation}
+    \frac{d}{dt} R(t) = r' R(t) \left[ 1 - \frac{R(t)}{R_c} \right] - a N(t) R(t) - \gamma(t) E(t) R(t). \label{forest_eq}
+\end{equation}
+
+The additional term $- \gamma(t) E(t) R(t)$, we assume that the forest area is decreased by a fraction of $\gamma(t) E(t)$. We represent 
+\begin{equation}
+    \gamma(t) = \begin{cases}
+        0 &, E(t) \leq 0 \\
+        \gamma_0 &, \text{others}
+    \end{cases}
+\end{equation}
+to enable influence only during El Niño event. It was estimated that strong El Niño suppress net growth in tropical forests by 8\% in 1997/1998 and 9\% in 2015/2016 \cite{enso_forest}. Assuming the index of $2 \:\text{K}$ for a strong event, we estimate $\gamma_0$ to be between 0.04 and 0.05 $\text{K}^{-1}$. 
+
+\subsection{Stability analysis}
+Following standard stability analysis performed in \cite{bologna2008simple}, we recognize two equilibrium points to Eq. \eqref{human_eq} and \eqref{forest_eq}:
+\begin{align}
+    N_0 = 0 &\:, R_0 = R_c \text{ (unstable saddle point)}, \\
+    N_e = \frac{\beta R_c (r'+\gamma E)}{\alpha \beta R_c + r'} &\:, R_e = \frac{R_c (r'+\gamma E)}{\alpha \beta R_c + r'} \text{ (stable point)}
+\end{align}
+
+The point $(N_0, R_0)$ is the trivial equilibrium point given absence of both human beings and resources. On the other hand, $(N_e, R_e)$ describes the humans-environment interaction. %Given $\alpha_0 >0$ and $\gamma E \geq 0$, this point does not coincide $(\beta R_c, R_c)$.
+
+\subsection{Estimating deforestation rate}
+We refer to $\alpha$ also as deforestation rate. From Global Forest Watch dashboard, we can estimate the percentage change of tree cover in Sumba Island between 2000 and 2020. Approximately, $14\%$ of tree cover, especially in the west part of the island, was lost between that period time. 
+
+Thus, deforestion rate can be approximated as
+\begin{align*}
+   a \approx \frac{1}{R} \frac{\Delta R}{\Delta T} = \frac{0.14}{20}
+\end{align*}
+Given human population data in 2010 to be around 686,000 based on Indonesian Statistics Institution, we conclude $\alpha \approx 10^{-8} \text{ years}^{-1}$.
+
+It is known that in 2020, tree cover (including forest, grassland, settlement, wetland, and cropland) of the island is $5,023 \:\text{km}^{-2}$, which will be the initial condition of the simulation. Correspondingly, the human population in 2020 is 853,000 persons.
+
+\subsection{Estimating carrying capacity}
+In a past study, a tropical forest was estimated to be capable to support 0.5--1 persons ha${}^{-1}$ at the present low-input level of technology, or 5--10 persons ha${}^{-1}$ with high inputs (fertilizers, mechanization, and an optimial mix of rain-fed crops) \cite{fearnside1990}. It shall be acknowledged that these values are still an overestimation. However, as an approximation to Sumba Island which has received small influence in modern technology, we assume that the island can support 5 persons ha${}^{-1}$. Referring back to Eq \eqref{human_eq}, we approximate $\beta \approx 500$.
+
+We apply an assumption that the forest carrying capacity follows the whole island area given past knowledge that the island was covered by forest. Thus, $R_c = 10,910$ km${}^{-1}$.
+
+\section{Methods}
+The differential equations will be solved with Euler's method which can be applied to a system of differential equations. Numerical integration is performed using Python language. The society collapse time is computed 
+
+An arising challenge from the model is to project Niño 3.4 monthly index beyond 2025. In this analysis, we apply bootstrapping method to construct projected index. With non-parametric bootstrap, we resample past observations and assume that it can represent events in the future. Non-parametric bootstrap is commonly used in uncertainty analysis for extreme value analysis method. The main assumption of this method is that our past observations are representative to the possibilities of Niño 3.4 index. The step-by-step algorithm to perform this projection is summarized here:
+
+\begin{enumerate}
+    \item The observed monthly ENSO index from January 2020 to December 2025 was preserved in all simulations.
+
+    \item A block length of 5 years (60 consecutive months) was specified to preserve the temporal persistence of ENSO events.
+
+    \item Beginning in January 2026, a starting month was randomly selected from the historical ENSO record such that a complete 60-month block could be extracted.
+
+    \item The selected 60-month ENSO block was appended to the future ENSO sequence.
+
+    \item Steps 3 and 4 were repeated until the synthetic ENSO sequence extended beyond December 2200.
+\end{enumerate}
+
+In the analysis, we perform simulation with 1,000 different realization of the Niño 3.4 index to the future. With this different projection, we can provide estimates (e.g 95\% ensemble interval) of the society collapse time and dynamics of human and forest over time.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\linewidth]{../../output/timeseries.png}
+\caption{Upper plot: Solution to Eq \eqref{human_eq} with $N_0=853,000$ persons and initial time $t=2020$; Lower plot: Solution to Eq \eqref{forest_eq} with $R_0=5,023$ km${}^{-1}$. Different solutions are plotted given varying values of $\gamma$. Thick lines indicate ensemble mean, while shaded area corresponds to the 95\% interval of the ensemble simulation.}
+\label{fig:ts}.
+\end{figure}
+
+\section{Simulation results}
+
+In Figure \ref{fig:ts}, the evolution of human population and forest area is plotted for six different values of $\gamma_0$. Given $\gamma_0 > 0$, El Niño--Southern Oscillation (ENSO) influences forest dynamics. Specifically, the net forest gain is decreased by a fraction of $\gamma_0 \:\text{ K}^{-1}$ of the forest area during El Niño events. Because of the stochasticity associated with the projected Niño 3.4 index, the simulation results are presented as the 95\% interval of the ensemble simulations over time.
+
+In general, \ref{fig:ts} shows that with or without climate interaction, human population in Sumba Island will reach a "no-return" point. The society collapse time is becoming earlier as climate stress is increased, which speeds up the reduction of forest area over time. Correspondingly, the value of maximum human population decreases given the more limited resources. With stronger climate stress, uncertainty is in the simulation also widens which indicates the resampled Niño 3.4 index have a prominent effect in shaping the forest dynamics.
+
+The decrease in society collapse time is shown in Figure \ref{fig:collapse}. Without climate interaction, society will collapse in the year of 2108. This result is comparable with the simulation in \cite{bologna2020deforestation} though it is applied in a global scale. With stronger climate stress, the collapse time decreases to around 2056--2067 given the conservative choice of $\gamma_0=0.05$, reflecting $\sim 10\%$ suppression of forest growth \cite{enso_forest}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\linewidth]{../../output/collapse_time.png}
+\caption{Society collapse time (defined as the time when human population peaks before decreases over the time) given different climate stress from El Niño}
+\label{fig:collapse}.
+\end{figure}
+
+\section{Conclusion}
+
+An existing human–forest model has been extended to include climate interactions in this analysis. Based on the results, the population in Sumba Island has a remaining time of approximately 3–8 decades under a constant consumption rate. The reduction in remaining time under climate stress is consistent with the hypothesis in \cite{bologna2020deforestation}, which highlights that strong environmental degradation can induce well-ordered decline in population.
+
+The effect of climate stress may be further complicated by anthropogenic climate change, which could further reduce the time to collapse. In this model, ENSO variability is assumed to be stationary, allowing it to be resampled and projected into the future. However, this is a strong assumption, as ENSO is a complex phenomenon that may interact with anthropogenic climate change.
+
+Overall, the results indicate that climate variability, particularly El Niño effect to forest growth suppression, can reduce system resilience and accelerate collapse in coupled human–forest model. Climate forcing interacts nonlinearly with population–resource feedbacks, leading to earlier collapse timescales. These findings indicate that ignoring climate variability may lead to overestimation of system resilience, with important implications for sustainable resource management in isolated regions.
+
+
+\section*{Data availability}
+Data on tree cover loss can be obtained from \href{www.globalforestwatch.org}{Global Forest Watch dashboard}. Population number can be accessed through  \href{ntt.bps.go.id}{Indonesian Statistics Institution or Badan Pusat Statistik}.
+
+\section*{Code availability}
+The code to reproduce all of the figures are available in \href{github.com/nathasya-abenita/diploma_bgc}{a GitHub repository}.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
