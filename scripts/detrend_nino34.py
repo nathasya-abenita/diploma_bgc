@@ -22,6 +22,7 @@ ds = ds.assign_coords(time=("time", decoded))
 df = ds.to_dataframe()
 df = df.rename(columns={'Nino3.4r': 'enso'})
 df = df.dropna()['1950': '2025']
+df['enso'] = detrend(df['enso'], type='linear')
 
 # Save
 df.to_csv('./data/nino34r_det.csv')
