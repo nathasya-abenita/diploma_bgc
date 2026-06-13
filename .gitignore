@@ -24,3 +24,5 @@ output
 *.idx
 *.ilg
 *.ind
+*.run.xml
+*.bcf
