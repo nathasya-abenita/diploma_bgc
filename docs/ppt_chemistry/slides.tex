@@ -69,16 +69,23 @@ Chemistry of Forest Fires and Regional Haze
         \item Haze: a regional air pollution phenomenon caused by biomass fires' emission.
         \item Impacts include health, biogeochemical cycles, weather and climate, tropospheric ozone, and rainwater acidity.
         \item Forest firest in SE Asia affect one of the most densely populated regions of the world.
-        \item Drivers: Often triggered by El Niño-induced droughts and deliberate land-clearing "slash and burn" practices
+        \item Drivers: 
+        \begin{itemize}
+            \item El Niño-induced droughts
+            \item deliberate land-clearing "slash and burn" practices
+        \end{itemize}
         \end{columns}
     \end{itemize}
 \end{frame}
 
 \section{Biomass Combustion Chemistry}
 \begin{frame}
-    \begin{itemize}
-        \item Fuel: vegetation, peat and lignite coal.
-    \end{itemize}
+    \begin{block}{Fuel}
+        \begin{itemize}
+            \item Includes vegetation, \textbf{peat and lignite coal}.
+            \item Dry plant matter can be approximated to \ce{CH2O}, also N, K, S, P.
+        \end{itemize}
+    \end{block}
 
     % \begin{block}{Stages of forest fire}
     %     \centering
@@ -88,7 +95,7 @@ Chemistry of Forest Fires and Regional Haze
     \begin{block}{Flaming Stage}
         \begin{itemize}
             \item Characterised by \textbf{high temperatures} (\qty{1800}{\kelvin}) and \textbf{visible} flames, under high oxgen concentrations.
-            \item Emissions rich in \ce{H2O}, \ce{CO2}, \ce{NO}, \ce{N2O}, and \ce{N2}, along with particles high in elemental carbon. Reactions tend to completion and oxidised forms are released.
+            \item Reactions tend to completion and oxidised forms are released: \ce{H2O}, \ce{CO2}, \ce{NO}, \ce{N2O}, and \ce{N2}, along with particles high in elemental carbon. 
         \end{itemize}
     \end{block}
 
@@ -111,7 +118,7 @@ Chemistry of Forest Fires and Regional Haze
 
 \begin{frame}
     \begin{itemize}
-        \item Methodology: 
+        \item Methodology of existing studies: 
         \begin{itemize}
             \item laboratory studies
             \item field measurements
@@ -120,11 +127,11 @@ Chemistry of Forest Fires and Regional Haze
         
     \end{itemize}
 
-    \begin{block}{Field Study in SE Asia (Brunei)}
+    \begin{block}{Field Study in SE Asia (Brunei for 1998 episode)}
         \begin{itemize}
-            \item Criteria Pollutants: Standard monitoring focus is on \ce{PM_{10}}, \ce{SO2}, \ce{NO2}, \ce{CO}, and \ce{O3}.
+            \item Criteria Pollutants: Standard monitoring focus is on \textbf{\ce{PM_{10}}}, \ce{SO2}, \ce{NO2}, \ce{CO}, and \ce{O3}.
             \item Aerosol Size: Particle size analysis shows that >99\% of haze particles are \ce{PM_{2.5}}, making them "respirable" and highly hazardous to health.
-            \item Suspended particle concentrations, leading to visible impacts: 
+            \item Visible impacts were attributed to suspended particle concentrations: 
             
             \begin{itemize}
                 \item \ce{C} was the major constituent, present at 50--70\% of the aerosol mass.
@@ -143,23 +150,23 @@ Chemistry of Forest Fires and Regional Haze
     % \end{itemize}
 
     \begin{block}{Radical Generation}
-        \[ \ce{O3 + h$\nu$ ($\lambda < \qty{315}{\nano\meter}$) -> O2 + O(^1D)} \]
+        \[ \ce{O3 + h$\nu$ -> O2 + O(^1D)} \] % ($\lambda < \qty{315}{\nano\meter}$)
         \[\ce{ O(^1D) + H2O -> 2OH${}^\cdot$ }\]
     \end{block}
 
-    \begin{block}{Ozone Production}
-        \[ \ce{NO2 + h$\nu$ -> NO + O(^3P)} \]
+    \begin{block}{Ozone Cycle}
+        \[ \ce{NO + HO2${}^\cdot$ -> NO2 + OH${}^\cdot$} \tag{\ce{NO} to \ce{NO2}}\]
+        \[ \ce{NO2 + h$\nu$ -> NO + O(^3P)} \tag{Ozone Formation}\]
         \[ \ce{O(^3P) + O2 + M -> O3 + M} \]
-    while 
-        \[ \ce{NO + O3 -> NO2 + O2} \]
+        \[ \ce{NO + O3 -> NO2 + O2} \tag{Ozone Loss}\]
     \end{block}
 
     \begin{block}{The Haze Paradox}
-        Under steady state,
-        $$
-        [\ce{O3}] = J \,[\ce{NO2}] / k \,[\ce{NO}]
-        $$
-        In thick haze, the photodissociation constant (J) is reduced because smoke blocks solar radiation, effectively "shutting down" \ce{O3} production.
+        \begin{itemize}
+            \item Under steady state, $[\ce{O3}] = J \,[\ce{NO2}] / k \,[\ce{NO}]$.
+            \item In thick haze, the photodissociation constant ($J$) is reduced because smoke blocks solar radiation.
+            % \item By measurement, ground-level \ce{O3} often remains low (5--45 ppbv) despite high precursors.
+        \end{itemize}
     \end{block}
 \end{frame}
 
@@ -177,12 +184,12 @@ Chemistry of Forest Fires and Regional Haze
         Acidifying compounds (e.g \ce{SO2}, \ce{NO_x}) are neutralized by alkaline substances (\ce{Ca}, \ce{Mg}, \ce{K}) leached from smoke particles into cloud water.
     \end{block}
 
-    \begin{block}{Deposition Rates}
-        \begin{itemize}
-            \item While haze increases the ionic content of individual rain samples, total annual acid deposition remains low because the fires occur during the dry season when precipitation is minimal.
-            \item The monthly contributions during periods of forest fires and haze to \ce{H^+} in Brunei is small, indicating a minor source of acidity in wet deposition.
-        \end{itemize}
-    \end{block}
+    % \begin{block}{Deposition Rates}
+    %     \begin{itemize}
+    %         \item While haze increases the ionic content of individual rain samples, total annual acid deposition remains low because the fires occur during the dry season when precipitation is minimal.
+    %         \item The monthly contributions during periods of forest fires and haze to \ce{H^+} in Brunei is small, indicating a minor source of acidity in wet deposition.
+    %     \end{itemize}
+    % \end{block}
 \end{frame}
 
 \section{Impacts on Weather and Climate}
@@ -197,7 +204,7 @@ Chemistry of Forest Fires and Regional Haze
 
     \begin{block}{Affecting The Earth's Radiation Balance}
         \begin{itemize}
-            \item Less solar heating at the Earth's surface due to scattering and absorption from smoke particles.
+            \item Scattering and absorption from smoke particles decreases solar heating at the Earth's surface.
             \item Reduced ambient temperatures were observed in Sarawak, Malaysia following 1997 episode.
             % \item Photosynthetically active radiation (PAR) was severely reduced, while relative humidity was higher on haze days compared to clear days.
         \end{itemize}
@@ -215,7 +222,8 @@ Chemistry of Forest Fires and Regional Haze
 \section{Concluding Remarks}
 \begin{frame}
     \begin{itemize}
-        \item SE Asian haze is dominated by PM${}_{2.5}$, inhibited photochemistry, neutralized rainwater acidity.
+        \item SE Asian haze is dominated by \ce{PM_{2.5}}, inhibited photochemistry, and neutralized rainwater acidity.
+        \item Regional haze can have notable impacts on weather and climate.
         \item These theories help us facing the coming El Niño event, which usually drives the forest fire.
     \end{itemize}
 \end{frame}
