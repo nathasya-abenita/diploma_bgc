@@ -53,7 +53,7 @@ Chemistry of Forest Fires and Regional Haze
 \begin{frame}
     \begin{itemize}
         \begin{columns}[T,onlytextwidth]
-        \column{0.5\textwidth}
+        \column{0.45\textwidth}
             \centering
             {
             \includegraphics[width=1.0\textwidth]{figs/se_asia.png}
@@ -64,10 +64,10 @@ Chemistry of Forest Fires and Regional Haze
             }
             }
         
-        \column{0.45\textwidth}
+        \column{0.5\textwidth}
         \item Forest fires in the tropics consume up to 80\% of the total biomass burned on a global scale.
         \item Haze: a regional air pollution phenomenon caused by biomass fires' emission.
-        \item Impacts include health, biogeochemical cycles, weather and climate, tropospheric ozone, and rainwater acidity.
+        \item Impacts include health, biogeochemical cycles, weather and climate, and atmospheric chemistry.
         \item Forest firest in SE Asia affect one of the most densely populated regions of the world.
         \item Drivers: 
         \begin{itemize}
@@ -102,7 +102,7 @@ Chemistry of Forest Fires and Regional Haze
     \begin{block}{Smouldering Stage}
         \begin{itemize}
             \item Characterised by \textbf{lower temperatures} and \textbf{without any visible} flames
-            \item Emits incompletely oxidised compounds: \ce{CO}, \ce{CH4}, non-methane hydrocarbons, PAHs, and VOCs.
+            \item Emits incompletely oxidised compounds: \ce{CO}, \ce{CH4}, non-methane hydrocarbons, PAHs, etc.
         \end{itemize}
     \end{block}
 
@@ -129,8 +129,8 @@ Chemistry of Forest Fires and Regional Haze
 
     \begin{block}{Field Study in SE Asia (Brunei for 1998 episode)}
         \begin{itemize}
-            \item Criteria Pollutants: Standard monitoring focus is on \textbf{\ce{PM_{10}}}, \ce{SO2}, \ce{NO2}, \ce{CO}, and \ce{O3}.
-            \item Aerosol Size: Particle size analysis shows that >99\% of haze particles are \ce{PM_{2.5}}, making them "respirable" and highly hazardous to health.
+            \item Monitored Criteria Pollutants: \textbf{\ce{PM_{10}}}, \ce{SO2}, \ce{NO2}, \ce{CO}, and \ce{O3}.
+            \item Aerosol Size: >99\% of haze particles are \ce{PM_{2.5}}, making them "respirable" and highly hazardous to health.
             \item Visible impacts were attributed to suspended particle concentrations: 
             
             \begin{itemize}
@@ -150,14 +150,18 @@ Chemistry of Forest Fires and Regional Haze
     % \end{itemize}
 
     \begin{block}{Radical Generation}
-        \[ \ce{O3 + h$\nu$ -> O2 + O(^1D)} \] % ($\lambda < \qty{315}{\nano\meter}$)
-        \[\ce{ O(^1D) + H2O -> 2OH${}^\cdot$ }\]
+        % \[ \ce{O3 + h$\nu$ -> O2 + O(^1D)} \] % ($\lambda < \qty{315}{\nano\meter}$)
+        % \[\ce{ O(^1D) + H2O -> 2OH${}^\cdot$ }\]
+        \[ \ce{O3 + h$\nu$ ->[H2O] O2 + 2OH${}^\cdot$} \tag{Hydroxyl}\]
+        % \[ \ce{CO + OH${}^\cdot$ ->[O2] CO2 + HO2${}^\cdot$}  \tag{Hydroperoxyl}\]
+        \[ \ce{H + O2 -> HO2${}^\cdot$ }  \tag{Hydroperoxyl}\]
     \end{block}
 
     \begin{block}{Ozone Cycle}
         \[ \ce{NO + HO2${}^\cdot$ -> NO2 + OH${}^\cdot$} \tag{\ce{NO} to \ce{NO2}}\]
-        \[ \ce{NO2 + h$\nu$ -> NO + O(^3P)} \tag{Ozone Formation}\]
-        \[ \ce{O(^3P) + O2 + M -> O3 + M} \]
+        % \[ \ce{NO2 + h$\nu$ -> NO + O(^3P)} \tag{Ozone Formation}\]
+        % \[ \ce{O(^3P) + O2 + M -> O3 + M} \]
+        \[ \ce{NO2 + h$\nu$ ->[O2] NO + O3} \tag{Ozone Formation}\]
         \[ \ce{NO + O3 -> NO2 + O2} \tag{Ozone Loss}\]
     \end{block}
 
@@ -165,7 +169,7 @@ Chemistry of Forest Fires and Regional Haze
         \begin{itemize}
             \item Under steady state, $[\ce{O3}] = J \,[\ce{NO2}] / k \,[\ce{NO}]$.
             \item In thick haze, the photodissociation constant ($J$) is reduced because smoke blocks solar radiation.
-            % \item By measurement, ground-level \ce{O3} often remains low (5--45 ppbv) despite high precursors.
+            \item By measurement, ground-level \ce{O3} often remains low despite high precursors.
         \end{itemize}
     \end{block}
 \end{frame}
@@ -198,7 +202,7 @@ Chemistry of Forest Fires and Regional Haze
     \begin{block}{Greenhouse Gases}
         \begin{itemize}
             \item Biomass burning is a significant global source of \ce{CO2} and \ce{CH4}.
-            \item Larger contributor to global carbon emissions after fossil fuel combustion in industrialised countries.
+            \item In the tropics, it is the largest contributor to global carbon emissions after fossil fuel combustion in industrialised countries.
         \end{itemize}
     \end{block}
 
@@ -222,7 +226,7 @@ Chemistry of Forest Fires and Regional Haze
 \section{Concluding Remarks}
 \begin{frame}
     \begin{itemize}
-        \item SE Asian haze is dominated by \ce{PM_{2.5}}, inhibited photochemistry, and neutralized rainwater acidity.
+        \item SE Asia haze is dominated by \ce{PM_{2.5}}, inhibited photochemistry, and neutralized rainwater acidity.
         \item Regional haze can have notable impacts on weather and climate.
         \item These theories help us facing the coming El Niño event, which usually drives the forest fire.
     \end{itemize}
