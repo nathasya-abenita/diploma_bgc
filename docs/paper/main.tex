@@ -61,7 +61,7 @@ In \cite{bologna2008simple}, followed by \cite{bologna2020deforestation}, a two-
 
 where $N$ and $R$ respectively represent the human population and forest coverage area in the island. $\beta$ is a positive constant related to the carrying capacity of the population, $r$ is the growth rate for humans ($0.01 \text{ years}^{-1}$), $a$ is identified as the technological parameter measuring the rate at which humans can extract the resources from the environment, $r'$ is the renewability parameter representing the capability of the resources to regenerate ($0.001 \text{ years}^{-1}$) and $R_c$ is the forest carrying capacity.
 
-Note that the model is different from the usual Lotka-Volterra models where the carrying capacity variation comes from external natural forces. Now, it is directly connected with the population dynamics. The dynamics of this model is typically described by a growing human population until a maximum is reached after a rapid collapse in population occurs before eventually reaching a low population steady state or total extinction. This maximum point is labelled as the "no-return point" where population collapse happens if deforestation rate is not changed before that time. Hereinafter, we refer to this point as society collapse time.
+Note that the model is different from the usual Lotka-Volterra models where the carrying capacity variation comes from external natural forces. Now, it is directly connected with the population dynamics. The dynamics of this model is typically described by a growing human population until a maximum is reached. After this, a rapid collapse in population occurs before eventually reaching a low population steady state or total extinction. This maximum point is labelled as the "no-return point" where population collapse happens if deforestation rate is not changed before that time. Hereinafter, we refer to this point as society collapse time.
 
 To include climate stress in the model, we focus on introducing El Niño effect on forest dynamics. We use linearly detrended monthly index of Niño 3.4 (1950--2025) to capture the variability \cite{huang2017extended}. Linear detrend is applied in attempt to seperate anthropogenic climate change effect in the climate variability. Let $E(t)$ be the index at year $t$.
 
@@ -84,7 +84,7 @@ By setting the derivatives to zero, we identify three equilibrium points of Eq. 
 \begin{align*}
     (N_1, R_1) &= (0, 0), \\
     (N_2, R_2) &= \left(0, R_c \left(1 - \gamma E / r' \right)\right), \\
-    (N_3, R_3) &= \left(\beta R_3, \frac{R_c (r' - \gamma E)}{a_0 \beta R_c + r'} \right).
+    (N_3, R_3) &= \left(\beta R_3, \frac{R_c (r' - \gamma E)}{a \beta R_c + r'} \right).
 \end{align*}
 
 The equilibria $(N_2, R_2)$ and $(N_3, R_3)$ exist under the condition $\gamma E < r'$. By studying the Jacobian matrix at these equilibrium points, it can be concluded that $(N_2, R_2)$ is locally unstable, while $(N_3, R_3)$ is locally stable.
@@ -92,11 +92,11 @@ The equilibria $(N_2, R_2)$ and $(N_3, R_3)$ exist under the condition $\gamma E
 The point $(N_1, R_1)$ is the trivial equilibrium corresponding to the absence of both human population and forest resources. On the other hand, $(N_2, R_2)$ describes a forest-only state, while $(N_3, R_3)$ describes coexistence between human population and forest.
 
 \subsection{Estimating deforestation rate}
-We refer to $\alpha$ also as deforestation or consumption rate. From Global Forest Watch dashboard, we can estimate the percentage change of tree cover in Sumba Island between 2000 and 2020. Approximately, $14\%$ of tree cover, especially in the west part of the island, was lost between that period time. 
+We refer to $a$ also as deforestation or consumption rate. From Global Forest Watch dashboard, we can estimate the percentage change of tree cover in Sumba Island between 2000 and 2020. Approximately, $14\%$ of tree cover, especially in the west part of the island, was lost between that period time. 
 
 Thus, deforestion rate can be approximated as
 \begin{align*}
-   -aN \sim \frac{1}{R} \frac{\Delta R}{\Delta T} = \frac{0.14}{20}
+   -aN \sim \frac{1}{R} \frac{\Delta R}{\Delta T} = -\frac{0.14}{20}
 \end{align*}
 Given human population data in 2010 to be around 686,000 based on Indonesian Statistics Institution, we conclude $a \approx 10^{-8} \text{ years}^{-1} \text{ persons}^{-1}$.
 
@@ -110,7 +110,7 @@ We apply an assumption that the forest carrying capacity follows the whole islan
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\linewidth]{../../output/timeseries.png}
-\caption{Upper plot: Solution to Eq \eqref{human_eq} with $N_0=780,000$ persons and initial time $t=2020$; Lower plot: Solution to Eq \eqref{forest_eq} with $R_0=5,023$ km${}^{2}$. Different solutions are plotted given varying values of $\gamma_0$. Thick lines indicate ensemble mean, while shaded area corresponds to the 95\% interval of the ensemble simulation.}
+\caption{Upper plot: Solution to Eq \eqref{human_eq} with $N_0=780,000$ persons and initial time $t=2020$ years; Lower plot: Solution to Eq \eqref{forest_eq} with $R_0=5,023$ km${}^{2}$. Different solutions are plotted given varying values of $\gamma_0$. Thick lines indicate ensemble mean, while shaded area corresponds to the 95\% interval of the ensemble simulation.}
 \label{fig:ts}.
 \end{figure}
 
