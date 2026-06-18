@@ -54,7 +54,7 @@ class HumanForestModel:
     R(t) : area coverage of forest
     '''
     def __init__ (self, dt, r, r_, a0, beta, Rc, gamma,
-                  N0, R0, t_bounds):
+                  N0, R0, t_bounds, seed=12345):
         self.dt = dt        # timestamp
         self.r = r          # human growth rate
         self.r_ = r_        # forest renewability
@@ -74,6 +74,9 @@ class HumanForestModel:
         duration = t_bounds[1] - t_bounds[0]
         self.n_iter = int(duration / dt) + 1
 
+        # initialize resample generator
+        self.rng = np.random.default_rng(seed)
+
     def generate_enso (self, enso_file=r'./data/nino34r_det.csv', plot=False):
         # Open data and keep values after pre-industrial
         df = pd.read_csv(enso_file).set_index(keys='time')
@@ -89,7 +92,10 @@ class HumanForestModel:
 
         if plot:
             fig, ax = plt.subplots()
-            ax.plot(enso_sim)
+            years = np.linspace(self.t1, self.t2, len(enso_sim))
+            ax.plot(years, enso_sim)
+            ax.set_xlabel('year')
+            ax.set_ylabel('nino 3.4 (K)')
         return enso_sim
                 
 
@@ -138,15 +144,13 @@ class HumanForestModel:
     
     def bootstrap_future_enso(self, enso_series, block_years=5):
 
-        rng = np.random.default_rng()
-
         target_months = (self.t2 - 2025) * 12 + 1
         block_size = block_years * 12
         values = enso_series.values
 
         synthetic = []
         while len(synthetic) < target_months:
-            start = rng.integers(0, len(values) - block_size)
+            start = self.rng.integers(0, len(values) - block_size)
             block = values[start:start + block_size]
             synthetic.extend(block)
 
@@ -178,7 +182,7 @@ if __name__ == '__main__':
     Nc = 500 * Rc #1.2 * N0 #Rc * 100
     beta = Nc/Rc
     gamma = 0             # years**{-1}
-    t_bounds = [2020, 2200]
+    t_bounds = [2020, 2300]
 
     # Call 
     model = HumanForestModel(dt, r, r_, a0, beta, Rc, gamma, N0, R0, t_bounds)
